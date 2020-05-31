@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `Spotify` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `Spotify`;
 -- MySQL dump 10.17  Distrib 10.3.23-MariaDB, for Win64 (AMD64)
 --
 -- Host: 64.227.4.17    Database: Spotify
@@ -31,7 +33,7 @@ CREATE TABLE `Album` (
   PRIMARY KEY (`id_album`),
   KEY `interprete` (`interprete`),
   CONSTRAINT `Album_ibfk_1` FOREIGN KEY (`interprete`) REFERENCES `Artista` (`id_artista`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +42,7 @@ CREATE TABLE `Album` (
 
 LOCK TABLES `Album` WRITE;
 /*!40000 ALTER TABLE `Album` DISABLE KEYS */;
+INSERT INTO `Album` VALUES (11,'The Eminem Show','2019-08-30','Hip Hop',1),(12,'Revival','2021-02-05','Pop',2),(13,'Lemonade','2020-10-03','R&B',3),(14,'Sweetener','2020-02-05','Pop',4),(15,'Purpose','2019-09-23','Pop',5),(16,'Greatest hits','2019-09-16','Soul',6),(17,'I Wanna Thank Me','2021-04-06','Hip Hop',7),(18,'Loose Change','2020-12-07','Pop',8),(19,'Damn','2019-08-04','Soul',9),(20,'When It\'s Dark Out','2021-03-01','Hip Hop',10),(21,'The Eminem Show','2019-08-30','Hip Hop',1),(22,'Revival','2021-02-05','Pop',2),(23,'Lemonade','2020-10-03','R&B',3),(24,'Sweetener','2020-02-05','Pop',4),(25,'Purpose','2019-09-23','Pop',5),(26,'Greatest hits','2019-09-16','Soul',6),(27,'I Wanna Thank Me','2021-04-06','Hip Hop',7),(28,'Loose Change','2020-12-07','Pop',8),(29,'Damn','2019-08-04','Soul',9),(30,'When It\'s Dark Out','2021-03-01','Hip Hop',10);
 /*!40000 ALTER TABLE `Album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +57,7 @@ CREATE TABLE `Artista` (
   `id_artista` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_artista`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +66,7 @@ CREATE TABLE `Artista` (
 
 LOCK TABLES `Artista` WRITE;
 /*!40000 ALTER TABLE `Artista` DISABLE KEYS */;
+INSERT INTO `Artista` VALUES (1,'Eminem'),(2,'Selena Gomez'),(3,'Beyoncé'),(4,'Ariana Grande'),(5,'Justin  Bieber'),(6,'Adele'),(7,'Snoop Dog'),(8,'Ed Sheeran'),(9,'Kendrick Lamar'),(10,'Geazy');
 /*!40000 ALTER TABLE `Artista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +85,7 @@ CREATE TABLE `Cancion` (
   PRIMARY KEY (`id_cancion`),
   KEY `interprete` (`interprete`),
   CONSTRAINT `Cancion_ibfk_1` FOREIGN KEY (`interprete`) REFERENCES `Artista` (`id_artista`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,6 +94,7 @@ CREATE TABLE `Cancion` (
 
 LOCK TABLES `Cancion` WRITE;
 /*!40000 ALTER TABLE `Cancion` DISABLE KEYS */;
+INSERT INTO `Cancion` VALUES (1,'Sing for the moment','03:44:00',1),(2,'Lose you to love me','03:21:00',2),(3,'Halo','03:01:00',3),(4,'7 rings','03:10:00',4),(5,'Company','02:56:00',5),(6,'Someone like you','03:19:00',6),(7,'Who am I','02:54:00',7),(8,'Perfect','03:00:00',8),(9,'Humble','04:01:00',9),(10,'Sober','03:39:00',10);
 /*!40000 ALTER TABLE `Cancion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,7 +109,7 @@ CREATE TABLE `Contrasena` (
   `idContrasena` int(11) NOT NULL AUTO_INCREMENT,
   `c_contrasenia` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idContrasena`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,42 +118,8 @@ CREATE TABLE `Contrasena` (
 
 LOCK TABLES `Contrasena` WRITE;
 /*!40000 ALTER TABLE `Contrasena` DISABLE KEYS */;
-INSERT INTO `Contrasena` VALUES (1,'Muis34a'),(2,'Suis34a'),(3,'Ruis34a'),(4,'Auis34a'),(5,'Cuis34a'),(6,'Fuis34a'),(7,'Cuis34a'),(8,'Suis34a'),(9,'Quis34a'),(10,'Iuis34a'),(11,'Tuis34a'),(12,'Puis34a'),(13,'Euis34a'),(14,'Muis34a'),(15,'Guis34a'),(16,'Yuis34a'),(17,'Luis34a'),(18,'Puis34a'),(19,'Yuis34a'),(20,'Puis34a'),(21,'Auis34a'),(22,'Cuis34a'),(23,'Ouis34a'),(24,'Juis34a'),(25,'Vuis34a'),(26,'Huis34a'),(27,'Auis34a'),(28,'Juis34a'),(29,'Tuis34a'),(30,'Wuis34a'),(31,'Vuis34a'),(32,'Cuis34a'),(33,'Puis34a'),(34,'Yuis34a'),(35,'Kuis34a'),(36,'Xuis34a'),(37,'Yuis34a'),(38,'Xuis34a'),(39,'Duis34a'),(40,'Nuis34a'),(41,'Ruis34a'),(42,'Suis34a'),(43,'Guis34a'),(44,'Auis34a'),(45,'Nuis34a'),(46,'Nuis34a'),(47,'Cuis34a'),(48,'Cuis34a'),(49,'Huis34a'),(50,'Auis34a'),(51,'Huis34a'),(52,'Zuis34a'),(53,'Zuis34a'),(54,'Huis34a'),(55,'Quis34a'),(56,'Quis34a'),(57,'Quis34a'),(58,'Duis34a'),(59,'Ouis34a'),(60,'Cuis34a'),(61,'Tuis34a'),(62,'Suis34a'),(63,'Xuis34a'),(64,'Suis34a'),(65,'Guis34a'),(66,'Auis34a'),(67,'Suis34a'),(68,'Huis34a'),(69,'Juis34a'),(70,'Puis34a'),(71,'Luis34a'),(72,'Ruis34a'),(73,'Auis34a'),(74,'Auis34a'),(75,'Cuis34a'),(76,'Buis34a'),(77,'Duis34a'),(78,'Luis34a'),(79,'Ouis34a'),(80,'Zuis34a'),(81,'Tuis34a'),(82,'Iuis34a'),(83,'Auis34a'),(84,'Iuis34a'),(85,'Juis34a'),(86,'Xuis34a'),(87,'Huis34a'),(88,'Nuis34a'),(89,'Uuis34a'),(90,'Suis34a'),(91,'Juis34a'),(92,'Tuis34a'),(93,'Cuis34a'),(94,'Duis34a'),(95,'Duis34a'),(96,'Juis34a'),(97,'Xuis34a'),(98,'Uuis34a'),(99,'Ruis34a'),(100,'Tuis34a');
+INSERT INTO `Contrasena` VALUES (1,'Muis34a'),(2,'Suis34a'),(3,'Ruis34a'),(4,'Auis34a'),(5,'Cuis34a'),(6,'Fuis34a'),(7,'Cuis34a'),(8,'Suis34a'),(9,'Quis34a'),(10,'Iuis34a'),(11,'Tuis34a'),(12,'Puis34a'),(13,'Euis34a'),(14,'Muis34a'),(15,'Guis34a'),(16,'Yuis34a'),(17,'Luis34a'),(18,'Puis34a'),(19,'Yuis34a'),(20,'Puis34a'),(21,'Auis34a'),(22,'Cuis34a'),(23,'Ouis34a'),(24,'Juis34a'),(25,'Vuis34a'),(26,'Huis34a'),(27,'Auis34a'),(28,'Juis34a'),(29,'Tuis34a'),(30,'Wuis34a'),(31,'Vuis34a'),(32,'Cuis34a'),(33,'Puis34a'),(34,'Yuis34a'),(35,'Kuis34a'),(36,'Xuis34a'),(37,'Yuis34a'),(38,'Xuis34a'),(39,'Duis34a'),(40,'Nuis34a'),(41,'Ruis34a'),(42,'Suis34a'),(43,'Guis34a'),(44,'Auis34a'),(45,'Nuis34a'),(46,'Nuis34a'),(47,'Cuis34a'),(48,'Cuis34a'),(49,'Huis34a'),(50,'Auis34a'),(51,'Huis34a'),(52,'Zuis34a'),(53,'Zuis34a'),(54,'Huis34a'),(55,'Quis34a'),(56,'Quis34a'),(57,'Quis34a'),(58,'Duis34a'),(59,'Ouis34a'),(60,'Cuis34a'),(61,'Tuis34a'),(62,'Suis34a'),(63,'Xuis34a'),(64,'Suis34a'),(65,'Guis34a'),(66,'Auis34a'),(67,'Suis34a'),(68,'Huis34a'),(69,'Juis34a'),(70,'Puis34a'),(71,'Luis34a'),(72,'Ruis34a'),(73,'Auis34a'),(74,'Auis34a'),(75,'Cuis34a'),(76,'Buis34a'),(77,'Duis34a'),(78,'Luis34a'),(79,'Ouis34a'),(80,'Zuis34a'),(81,'Tuis34a'),(82,'Iuis34a'),(83,'Auis34a'),(84,'Iuis34a'),(85,'Juis34a'),(86,'Xuis34a'),(87,'Huis34a'),(88,'Nuis34a'),(89,'Uuis34a'),(90,'Suis34a'),(91,'Juis34a'),(92,'Tuis34a'),(93,'Cuis34a'),(94,'Duis34a'),(95,'Duis34a'),(96,'Juis34a'),(97,'Xuis34a'),(98,'Uuis34a'),(99,'Ruis34a'),(100,'Tuis34a'),(101,'MDFTR*');
 /*!40000 ALTER TABLE `Contrasena` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Explorar`
---
-
-DROP TABLE IF EXISTS `Explorar`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Explorar` (
-  `id_explorar` int(11) NOT NULL AUTO_INCREMENT,
-  `codExplorar` int(11) DEFAULT NULL,
-  `genero` varchar(45) DEFAULT NULL,
-  `mood` varchar(45) DEFAULT NULL,
-  `codPodcasts` int(11) DEFAULT NULL,
-  `exitos` varchar(45) DEFAULT NULL,
-  `novedades` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_explorar`),
-  KEY `codExplorar` (`codExplorar`),
-  KEY `codPodcasts` (`codPodcasts`),
-  CONSTRAINT `Explorar_ibfk_1` FOREIGN KEY (`codExplorar`) REFERENCES `premiumUser` (`id_premiumUser`),
-  CONSTRAINT `Explorar_ibfk_2` FOREIGN KEY (`codPodcasts`) REFERENCES `premiumUser` (`id_premiumUser`),
-  CONSTRAINT `Explorar_ibfk_3` FOREIGN KEY (`codExplorar`) REFERENCES `basicUser` (`id_basicUser`),
-  CONSTRAINT `Explorar_ibfk_4` FOREIGN KEY (`codPodcasts`) REFERENCES `basicUser` (`id_basicUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Explorar`
---
-
-LOCK TABLES `Explorar` WRITE;
-/*!40000 ALTER TABLE `Explorar` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Explorar` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -163,7 +134,7 @@ CREATE TABLE `Podcasts` (
   `titulo` varchar(45) NOT NULL,
   PRIMARY KEY (`id_podcasts`),
   UNIQUE KEY `titulo` (`titulo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,6 +143,7 @@ CREATE TABLE `Podcasts` (
 
 LOCK TABLES `Podcasts` WRITE;
 /*!40000 ALTER TABLE `Podcasts` DISABLE KEYS */;
+INSERT INTO `Podcasts` VALUES (5,'Conanr'),(1,'Fisher'),(8,'Hirames'),(2,'Klein'),(9,'Macaulope'),(3,'Russo'),(4,'Salinas'),(10,'Thorray'),(6,'Watkins'),(7,'Xamolina');
 /*!40000 ALTER TABLE `Podcasts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,6 +170,7 @@ CREATE TABLE `Tarjeta` (
 
 LOCK TABLES `Tarjeta` WRITE;
 /*!40000 ALTER TABLE `Tarjeta` DISABLE KEYS */;
+INSERT INTO `Tarjeta` VALUES (1,428665378,'2021-01-03',604),(2,430500116,'2020-08-13',156),(3,471647231,'2020-11-18',645),(4,40240071,'2020-08-31',761),(5,453937853,'2020-06-16',294),(6,4569362,'2021-03-26',498),(7,47165927,'2020-11-10',424),(8,4559032,'2021-02-28',714),(9,4539259,'2020-08-23',760),(10,4262987,'2020-12-22',994);
 /*!40000 ALTER TABLE `Tarjeta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +228,7 @@ CREATE TABLE `basicUser` (
   KEY `CodbasicUser` (`CodbasicUser`),
   CONSTRAINT `basicUser_ibfk_1` FOREIGN KEY (`contrasenia`) REFERENCES `Contrasena` (`idContrasena`),
   CONSTRAINT `basicUser_ibfk_2` FOREIGN KEY (`CodbasicUser`) REFERENCES `adminUser` (`id_adminUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,6 +237,7 @@ CREATE TABLE `basicUser` (
 
 LOCK TABLES `basicUser` WRITE;
 /*!40000 ALTER TABLE `basicUser` DISABLE KEYS */;
+INSERT INTO `basicUser` VALUES (161,11,'ezs8ma2i2','egestas.urna.justo@Aeneanegetmagna.com',1,'2019-11-09','F'),(162,11,'ees8ma6i2','elementum.purus@scelerisquedui.ca',2,'2020-11-02','F'),(163,11,'eks8ma8i2','ultrices@gravidaAliquam.net',3,'2019-08-17','F'),(164,11,'ews8ma9i2','Maecenas.libero.est@erat.ca',4,'2021-02-12','M'),(165,11,'eqs8ma2i2','lacus@lectus.org',5,'2019-01-18','M'),(166,11,'ees8ma4i2','sem@arcu.edu',6,'2019-11-06','M'),(167,12,'eps8ma9i2','Nunc@vitaepurus.com',7,'2019-03-25','F'),(168,13,'ecs8ma3i2','sit.amet@velfaucibus.net',8,'2020-06-04','M'),(169,11,'exs8ma3i2','libero@nullaDonecnon.co.uk',9,'2020-05-04','F'),(170,13,'eis8ma6i2','amet.risus.Donec@urna.com',10,'2020-08-03','M');
 /*!40000 ALTER TABLE `basicUser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +260,7 @@ CREATE TABLE `favSong` (
   CONSTRAINT `favSong_ibfk_1` FOREIGN KEY (`idcancion`) REFERENCES `Cancion` (`id_cancion`),
   CONSTRAINT `favSong_ibfk_2` FOREIGN KEY (`interprete`) REFERENCES `Artista` (`id_artista`),
   CONSTRAINT `favSong_ibfk_3` FOREIGN KEY (`idplaylist`) REFERENCES `playList` (`id_playList`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,6 +269,7 @@ CREATE TABLE `favSong` (
 
 LOCK TABLES `favSong` WRITE;
 /*!40000 ALTER TABLE `favSong` DISABLE KEYS */;
+INSERT INTO `favSong` VALUES (1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6),(7,7,7,7),(8,8,8,8),(9,9,9,9),(10,10,10,10),(11,1,1,1),(12,2,2,2),(13,3,3,3),(14,4,4,4),(15,5,5,5),(16,6,6,6),(17,7,7,7),(18,8,8,8),(19,9,9,9),(20,10,10,10);
 /*!40000 ALTER TABLE `favSong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,7 +285,7 @@ CREATE TABLE `playList` (
   `titulo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_playList`),
   UNIQUE KEY `titulo` (`titulo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,6 +294,7 @@ CREATE TABLE `playList` (
 
 LOCK TABLES `playList` WRITE;
 /*!40000 ALTER TABLE `playList` DISABLE KEYS */;
+INSERT INTO `playList` VALUES (8,'Acline'),(5,'Buckminster'),(1,'Galvinlist'),(10,'Hip Hop 2020'),(3,'listHarrison'),(2,'listTaylor'),(7,'Marshalllist'),(4,'Pricelist'),(9,'sadsongs'),(6,'Shaw');
 /*!40000 ALTER TABLE `playList` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,7 +325,7 @@ CREATE TABLE `premiumUser` (
   CONSTRAINT `premiumUser_ibfk_1` FOREIGN KEY (`CodpremiumUser`) REFERENCES `adminUser` (`id_adminUser`),
   CONSTRAINT `premiumUser_ibfk_2` FOREIGN KEY (`contrasenia`) REFERENCES `Contrasena` (`idContrasena`),
   CONSTRAINT `premiumUser_ibfk_3` FOREIGN KEY (`tarjet`) REFERENCES `Tarjeta` (`idTarjeta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,6 +334,7 @@ CREATE TABLE `premiumUser` (
 
 LOCK TABLES `premiumUser` WRITE;
 /*!40000 ALTER TABLE `premiumUser` DISABLE KEYS */;
+INSERT INTO `premiumUser` VALUES (81,11,'pedr3segm4','elit.Curabitur@augueac.com',1,1,'2019-06-14','M','Individual',1183),(82,12,'pedsr3seg5','tortor.dictum@tincidunt.org',2,2,'2020-07-11','F','Duo',2091),(83,12,'pedr3segfm4','eu.turpis.Nulla@adipiscingelitEtiam.edu',3,3,'2020-10-09','M','Universitario',1781),(84,12,'pedr3se','dolor.egestas@nunc.ca',4,4,'2020-11-24','M','Universitario',3111),(85,12,'pedrsegsm4','cubilia.Curae.Donec@placerateget.co.uk',5,5,'2019-10-08','M','Universitario',3925),(86,13,'pedrgm2','massa@montesnasceturridiculus.org',6,6,'2020-02-17','M','Individual',3844),(87,13,'pedrsegm9','nec.metus@enimEtiam.org',7,7,'2019-08-26','F','Familiar',3033),(88,13,'pedrsegm34','Curabitur.massa.Vestibulum@nuncac.edu',8,8,'2021-05-02','M','Duo',3427),(89,14,'pedr36segm','justo@Fusce.co.uk',9,9,'2019-06-20','F','Duo',1827),(90,14,'pedrseu23','diam.luctus@ProinvelitSed.net',10,10,'2019-09-30','F','Individual',273);
 /*!40000 ALTER TABLE `premiumUser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -380,7 +357,7 @@ CREATE TABLE `recentlyListened` (
   CONSTRAINT `recentlyListened_ibfk_1` FOREIGN KEY (`idalbum`) REFERENCES `Album` (`id_album`),
   CONSTRAINT `recentlyListened_ibfk_2` FOREIGN KEY (`idcancion`) REFERENCES `Cancion` (`id_cancion`),
   CONSTRAINT `recentlyListened_ibfk_3` FOREIGN KEY (`idplaylist`) REFERENCES `playList` (`id_playList`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -389,6 +366,7 @@ CREATE TABLE `recentlyListened` (
 
 LOCK TABLES `recentlyListened` WRITE;
 /*!40000 ALTER TABLE `recentlyListened` DISABLE KEYS */;
+INSERT INTO `recentlyListened` VALUES (121,11,1,1),(122,12,2,2),(123,13,3,3),(124,14,4,4),(125,15,5,5),(126,16,6,6),(127,17,7,7),(128,18,8,8),(129,19,9,9),(130,20,10,10);
 /*!40000 ALTER TABLE `recentlyListened` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +389,7 @@ CREATE TABLE `songsPlaylist` (
   CONSTRAINT `songsPlaylist_ibfk_1` FOREIGN KEY (`idplaylist`) REFERENCES `playList` (`id_playList`),
   CONSTRAINT `songsPlaylist_ibfk_2` FOREIGN KEY (`interprete`) REFERENCES `Artista` (`id_artista`),
   CONSTRAINT `songsPlaylist_ibfk_3` FOREIGN KEY (`idcancion`) REFERENCES `Cancion` (`id_cancion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -420,6 +398,7 @@ CREATE TABLE `songsPlaylist` (
 
 LOCK TABLES `songsPlaylist` WRITE;
 /*!40000 ALTER TABLE `songsPlaylist` DISABLE KEYS */;
+INSERT INTO `songsPlaylist` VALUES (1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6),(7,7,7,7),(8,8,8,8),(9,9,9,9),(10,10,10,10);
 /*!40000 ALTER TABLE `songsPlaylist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,4 +419,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-29 13:48:26
+-- Dump completed on 2020-05-31 18:03:37
