@@ -123,6 +123,36 @@ INSERT INTO `Contrasena` VALUES (1,'Muis34a'),(2,'Suis34a'),(3,'Ruis34a'),(4,'Au
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Ingresos`
+--
+
+DROP TABLE IF EXISTS `Ingresos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Ingresos` (
+  `id_auditoria` int(11) NOT NULL AUTO_INCREMENT,
+  `procedimiento` varchar(100) DEFAULT NULL,
+  `fecha_ingreso` date DEFAULT NULL,
+  `entrada` time DEFAULT NULL,
+  `salida` time DEFAULT NULL,
+  `CodUser` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_auditoria`),
+  KEY `CodUser` (`CodUser`),
+  CONSTRAINT `Ingresos_ibfk_1` FOREIGN KEY (`CodUser`) REFERENCES `Usuario` (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Ingresos`
+--
+
+LOCK TABLES `Ingresos` WRITE;
+/*!40000 ALTER TABLE `Ingresos` DISABLE KEYS */;
+INSERT INTO `Ingresos` VALUES (1,'ekgemgtt','2019-01-25','11:05:20','12:05:20',11),(2,'amemvfmgtt','2020-01-23','10:05:20','12:05:20',12),(3,'eifmeef','2020-01-22','09:05:20','12:05:20',13),(4,'lkiokd','2019-02-25','11:05:20','12:05:20',14),(5,'ekewrett','2020-03-30','11:05:00','12:00:20',15);
+/*!40000 ALTER TABLE `Ingresos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Podcasts`
 --
 
@@ -175,70 +205,35 @@ INSERT INTO `Tarjeta` VALUES (1,428665378,'2021-01-03',604),(2,430500116,'2020-0
 UNLOCK TABLES;
 
 --
--- Table structure for table `adminUser`
+-- Table structure for table `Usuario`
 --
 
-DROP TABLE IF EXISTS `adminUser`;
+DROP TABLE IF EXISTS `Usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `adminUser` (
-  `id_adminUser` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `Usuario` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `contrasenia` int(11) DEFAULT NULL,
   `fecha_nacimiento` date NOT NULL,
   `sexo` char(1) DEFAULT NULL,
-  PRIMARY KEY (`id_adminUser`),
+  PRIMARY KEY (`id_user`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   KEY `contrasenia` (`contrasenia`),
-  CONSTRAINT `adminUser_ibfk_1` FOREIGN KEY (`contrasenia`) REFERENCES `Contrasena` (`idContrasena`)
+  CONSTRAINT `Usuario_ibfk_1` FOREIGN KEY (`contrasenia`) REFERENCES `Contrasena` (`idContrasena`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `adminUser`
+-- Dumping data for table `Usuario`
 --
 
-LOCK TABLES `adminUser` WRITE;
-/*!40000 ALTER TABLE `adminUser` DISABLE KEYS */;
-INSERT INTO `adminUser` VALUES (11,'Maria','maria@bbb.hotmail',1,'2012-01-25','F'),(12,'Julia','julio@bbb.hotmail',2,'2012-10-25','F'),(13,'Frank','frank@bbb.hotmail',3,'2012-12-25','M'),(14,'Elias','Elias@bbb.hotmail',4,'2012-11-25','M'),(15,'Ernesto','ernesto@bbb.hotmail',5,'2012-09-25','M');
-/*!40000 ALTER TABLE `adminUser` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `basicUser`
---
-
-DROP TABLE IF EXISTS `basicUser`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `basicUser` (
-  `id_basicUser` int(11) NOT NULL AUTO_INCREMENT,
-  `CodbasicUser` int(11) DEFAULT NULL,
-  `username` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `contrasenia` int(11) DEFAULT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  `sexo` char(1) DEFAULT NULL,
-  PRIMARY KEY (`id_basicUser`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`),
-  KEY `contrasenia` (`contrasenia`),
-  KEY `CodbasicUser` (`CodbasicUser`),
-  CONSTRAINT `basicUser_ibfk_1` FOREIGN KEY (`contrasenia`) REFERENCES `Contrasena` (`idContrasena`),
-  CONSTRAINT `basicUser_ibfk_2` FOREIGN KEY (`CodbasicUser`) REFERENCES `adminUser` (`id_adminUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `basicUser`
---
-
-LOCK TABLES `basicUser` WRITE;
-/*!40000 ALTER TABLE `basicUser` DISABLE KEYS */;
-INSERT INTO `basicUser` VALUES (161,11,'ezs8ma2i2','egestas.urna.justo@Aeneanegetmagna.com',1,'2019-11-09','F'),(162,11,'ees8ma6i2','elementum.purus@scelerisquedui.ca',2,'2020-11-02','F'),(163,11,'eks8ma8i2','ultrices@gravidaAliquam.net',3,'2019-08-17','F'),(164,11,'ews8ma9i2','Maecenas.libero.est@erat.ca',4,'2021-02-12','M'),(165,11,'eqs8ma2i2','lacus@lectus.org',5,'2019-01-18','M'),(166,11,'ees8ma4i2','sem@arcu.edu',6,'2019-11-06','M'),(167,12,'eps8ma9i2','Nunc@vitaepurus.com',7,'2019-03-25','F'),(168,13,'ecs8ma3i2','sit.amet@velfaucibus.net',8,'2020-06-04','M'),(169,11,'exs8ma3i2','libero@nullaDonecnon.co.uk',9,'2020-05-04','F'),(170,13,'eis8ma6i2','amet.risus.Donec@urna.com',10,'2020-08-03','M');
-/*!40000 ALTER TABLE `basicUser` ENABLE KEYS */;
+LOCK TABLES `Usuario` WRITE;
+/*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
+INSERT INTO `Usuario` VALUES (11,'Maria','maria@bbb.hotmail',1,'2012-01-25','F'),(12,'Julia','julio@bbb.hotmail',2,'2012-10-25','F'),(13,'Frank','frank@bbb.hotmail',3,'2012-12-25','M'),(14,'Elias','Elias@bbb.hotmail',4,'2012-11-25','M'),(15,'Ernesto','ernesto@bbb.hotmail',5,'2012-09-25','M');
+/*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -296,46 +291,6 @@ LOCK TABLES `playList` WRITE;
 /*!40000 ALTER TABLE `playList` DISABLE KEYS */;
 INSERT INTO `playList` VALUES (8,'Acline'),(5,'Buckminster'),(1,'Galvinlist'),(10,'Hip Hop 2020'),(3,'listHarrison'),(2,'listTaylor'),(7,'Marshalllist'),(4,'Pricelist'),(9,'sadsongs'),(6,'Shaw');
 /*!40000 ALTER TABLE `playList` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `premiumUser`
---
-
-DROP TABLE IF EXISTS `premiumUser`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `premiumUser` (
-  `id_premiumUser` int(11) NOT NULL AUTO_INCREMENT,
-  `CodpremiumUser` int(11) DEFAULT NULL,
-  `username` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `contrasenia` int(11) DEFAULT NULL,
-  `tarjet` int(11) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  `sexo` char(1) DEFAULT NULL,
-  `tipoPremUser` varchar(45) NOT NULL,
-  `NumDescargas` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_premiumUser`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `tarjet` (`tarjet`),
-  KEY `CodpremiumUser` (`CodpremiumUser`),
-  KEY `contrasenia` (`contrasenia`),
-  CONSTRAINT `premiumUser_ibfk_1` FOREIGN KEY (`CodpremiumUser`) REFERENCES `adminUser` (`id_adminUser`),
-  CONSTRAINT `premiumUser_ibfk_2` FOREIGN KEY (`contrasenia`) REFERENCES `Contrasena` (`idContrasena`),
-  CONSTRAINT `premiumUser_ibfk_3` FOREIGN KEY (`tarjet`) REFERENCES `Tarjeta` (`idTarjeta`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `premiumUser`
---
-
-LOCK TABLES `premiumUser` WRITE;
-/*!40000 ALTER TABLE `premiumUser` DISABLE KEYS */;
-INSERT INTO `premiumUser` VALUES (81,11,'pedr3segm4','elit.Curabitur@augueac.com',1,1,'2019-06-14','M','Individual',1183),(82,12,'pedsr3seg5','tortor.dictum@tincidunt.org',2,2,'2020-07-11','F','Duo',2091),(83,12,'pedr3segfm4','eu.turpis.Nulla@adipiscingelitEtiam.edu',3,3,'2020-10-09','M','Universitario',1781),(84,12,'pedr3se','dolor.egestas@nunc.ca',4,4,'2020-11-24','M','Universitario',3111),(85,12,'pedrsegsm4','cubilia.Curae.Donec@placerateget.co.uk',5,5,'2019-10-08','M','Universitario',3925),(86,13,'pedrgm2','massa@montesnasceturridiculus.org',6,6,'2020-02-17','M','Individual',3844),(87,13,'pedrsegm9','nec.metus@enimEtiam.org',7,7,'2019-08-26','F','Familiar',3033),(88,13,'pedrsegm34','Curabitur.massa.Vestibulum@nuncac.edu',8,8,'2021-05-02','M','Duo',3427),(89,14,'pedr36segm','justo@Fusce.co.uk',9,9,'2019-06-20','F','Duo',1827),(90,14,'pedrseu23','diam.luctus@ProinvelitSed.net',10,10,'2019-09-30','F','Individual',273);
-/*!40000 ALTER TABLE `premiumUser` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -403,12 +358,85 @@ INSERT INTO `songsPlaylist` VALUES (1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,
 UNLOCK TABLES;
 
 --
+-- Temporary table structure for view `vista_Nombre_Usuario2`
+--
+
+DROP TABLE IF EXISTS `vista_Nombre_Usuario2`;
+/*!50001 DROP VIEW IF EXISTS `vista_Nombre_Usuario2`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vista_Nombre_Usuario2` (
+  `id_user` tinyint NOT NULL,
+  `username` tinyint NOT NULL,
+  `email` tinyint NOT NULL,
+  `contrasenia` tinyint NOT NULL,
+  `fecha_nacimiento` tinyint NOT NULL,
+  `sexo` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `vista_reporteIngresoUsuario`
+--
+
+DROP TABLE IF EXISTS `vista_reporteIngresoUsuario`;
+/*!50001 DROP VIEW IF EXISTS `vista_reporteIngresoUsuario`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vista_reporteIngresoUsuario` (
+  `username` tinyint NOT NULL,
+  `ultima_fecha_ingreso` tinyint NOT NULL,
+  `entrada` tinyint NOT NULL,
+  `salida` tinyint NOT NULL,
+  `cantidad_ingreso` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Dumping events for database 'Spotify'
 --
 
 --
 -- Dumping routines for database 'Spotify'
 --
+
+--
+-- Final view structure for view `vista_Nombre_Usuario2`
+--
+
+/*!50001 DROP TABLE IF EXISTS `vista_Nombre_Usuario2`*/;
+/*!50001 DROP VIEW IF EXISTS `vista_Nombre_Usuario2`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `vista_Nombre_Usuario2` AS select `Usuario`.`id_user` AS `id_user`,`Usuario`.`username` AS `username`,`Usuario`.`email` AS `email`,`Usuario`.`contrasenia` AS `contrasenia`,`Usuario`.`fecha_nacimiento` AS `fecha_nacimiento`,`Usuario`.`sexo` AS `sexo` from `Usuario` where `Usuario`.`username` like 'J%' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vista_reporteIngresoUsuario`
+--
+
+/*!50001 DROP TABLE IF EXISTS `vista_reporteIngresoUsuario`*/;
+/*!50001 DROP VIEW IF EXISTS `vista_reporteIngresoUsuario`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `vista_reporteIngresoUsuario` AS select `Usuario`.`username` AS `username`,max(`Ingresos`.`fecha_ingreso`) AS `ultima_fecha_ingreso`,`Ingresos`.`entrada` AS `entrada`,`Ingresos`.`salida` AS `salida`,count(`Ingresos`.`CodUser`) AS `cantidad_ingreso` from (`Usuario` join `Ingresos` on(`Usuario`.`id_user` = `Ingresos`.`CodUser`)) group by `Usuario`.`id_user` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -419,4 +447,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-31 18:03:37
+-- Dump completed on 2020-06-01 22:31:02
